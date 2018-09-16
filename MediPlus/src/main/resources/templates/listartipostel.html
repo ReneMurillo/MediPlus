@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Lista de tipos de teléfono</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"  />
+</head>
+<body>
+<div class="container">
+
+<br>
+<div class="row">
+	<a th:href="@{/formtipostel}" class="btn btn-success btn-xs">Registrar tipo de teléfono</a> |
+	<a th:href="@{/}" class="btn btn-warning btn-xs" >Regresar</a>
+</div>
+<br>
+	<table class="table">
+ <thead>
+  <tr>
+     <th scope="col">Id</th>
+     <th scope="col">Nombre</th>
+  </tr>
+ </thead>
+
+ <tbody>
+  <tr th:each="tipoTelefono: ${tipos_telefonos}">
+     <td th:text="${tipoTelefono.id}"/>
+     <td th:text="${tipoTelefono.Nombre}" />
+     <td> <a th:href="@{/formtipostel/} + ${tipoTelefono.id}" th:text="'Editar'" class="btn btn-primary btn-xs" ></a></td>
+     <td> <a th:href="@{/deletetipotel/} + ${tipoTelefono.id}" th:text="'Eliminar'" class="btn btn-danger btn-xs" onclick="return confirm('Estas seguro?')" ></a></td>
+  </tr>
+ </tbody>
+</table>
+</div>
+
+
+
+
+
+
+
+</body>
+</html>

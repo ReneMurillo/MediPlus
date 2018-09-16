@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Lista de pacientes</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"  />
+</head>
+<body>
+<div class="container">
+<br>
+<div class="row">
+	<a th:href="@{/formencargados}" class="btn btn-success btn-xs" >Registrar encargado</a> |
+	<a th:href="@{/}" class="btn btn-warning btn-xs" >Regresar</a>
+</div>
+<br>
+	<table class="table">
+ <thead>
+  <tr>
+     <th scope="col">Id</th>
+     <th scope="col">Primer Nombre</th>
+     <th scope="col">Segundo Nombre</th>
+     <th scope="col">Primer Apellido</th>
+     <th scope="col">Segundo Apellido</th>
+     <th scope="col">DUI</th>
+     <th scope="col">Dirección</th>
+     <th scope="col">Responsable de</th>
+     <th scope="col">Parentesco</th>
+  </tr>
+ </thead>
+
+ <tbody>
+  <tr th:each="encargadopaciente: ${encargadospacientes}">
+     <td th:text="${encargadopaciente.id}"/>
+     <td th:text="${encargadopaciente.firstName}" />
+     <td th:text="${encargadopaciente.secondName}" />
+     <td th:text="${encargadopaciente.firstLastName}" />
+     <td th:text="${encargadopaciente.secondLastName}" />
+     <td th:text="${encargadopaciente.dui}" />
+     <td th:text="${encargadopaciente.direccion}" />
+     <td th:text="${encargadopaciente.paciente.firstName} + ' ' + ${encargadopaciente.paciente.firstLastName}" />
+     <td th:text="${encargadopaciente.parentesco}" />
+     <td> <a th:href="@{/formencargados/} + ${encargadopaciente.id}" th:text="'Editar'" class="btn btn-primary btn-xs" ></a></td>
+     <td> <a th:href="@{/eliminarencargado/} + ${encargadopaciente.id}" th:text="'Eliminar'" class="btn btn-danger btn-xs" onclick="return confirm('Estas seguro?')" ></a></td>
+  </tr>
+ </tbody>
+</table>
+</div>
+
+
+
+
+
+
+</body>
+</html>

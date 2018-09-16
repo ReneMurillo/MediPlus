@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title th:text="${titulo}">Registro de encargado del paciente</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"  />
+</head>
+<body>
+<div class="container">
+<br>
+<div class="row">
+<div class="col-sm-2"></div>
+<div class="col-sm-8">
+<div class="panel panel-primary">
+<div class="panel-heading">Registro de encargado paciente</div>
+<div class="panel-body">
+<form th:action="@{/formencargados}" th:object="${encargadoPaciente}" method="post" >
+	<div class="form-group">
+    	<label for="firstName">Primer nombre</label>
+    	<input type="text" class="form-control" id="firstName" placeholder="Primer nombre" th:field="*{firstName}"/>
+    	<small th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="form-text text-danger"></small>
+  	</div>
+  	<div class="form-group">
+    	<label for="secondName">Segundo nombre</label>
+    	<input type="text" class="form-control" id="secondName" placeholder="Segundo nombre" th:field="*{secondName}"/>
+    	<small th:if="${#fields.hasErrors('secondName')}" th:errors="*{secondName}" class="form-text text-danger"></small>
+  	</div>
+	<div class="form-group">
+    	<label for="firstLastName">Primer apellido</label>
+    	<input type="text" class="form-control" id="firstLastName" placeholder="Primer apellido" th:field="*{firstLastName}"/>
+    	<small th:if="${#fields.hasErrors('firstLastName')}" th:errors="*{firstLastName}" class="form-text text-danger"></small>
+  	</div>
+  	<div class="form-group">
+    	<label for="secondLastName">Segundo apellido</label>
+    	<input type="text" class="form-control" id="secondLastName" placeholder="Segundo apellido" th:field="*{secondLastName}"/>
+    	<small th:if="${#fields.hasErrors('secondLastName')}" th:errors="*{secondLastName}" class="form-text text-danger"></small>
+  	</div>
+	<div class="form-group">
+    	<label for="dui">DUI</label>
+    	<input type="text" class="form-control" id="dui" placeholder="Ejemplo: 012345678-9" th:field="*{dui}"/>
+    	<small th:if="${#fields.hasErrors('dui')}" th:errors="*{dui}" class="form-text text-danger"></small>
+  	</div>
+  	<div class="form-group">
+    	<label for="direccion">Dirección</label>
+    	<input type="text" class="form-control" id="direccion" placeholder="Dirección del encargado" th:field="*{direccion}"/>
+    	<small th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}" class="form-text text-danger"></small>
+  	</div>
+  	<div class="form-group">
+    	<label for="parentesco">Parentesco</label>
+    	<input type="text" class="form-control" id="parentesco" placeholder="Parentesco con el paciente" th:field="*{parentesco}"/>
+    	<small th:if="${#fields.hasErrors('parentesco')}" th:errors="*{parentesco}" class="form-text text-danger"></small>
+  	</div>
+  	<div class="form-group">
+    	<label for="paciente">Paciente</label>
+    	<input type="text" class="form-control" id="paciente" placeholder="ID del paciente" th:field="*{paciente}"/>
+    	<small th:if="${#fields.hasErrors('paciente')}" th:errors="*{paciente}" class="form-text text-danger"></small>
+  	</div>
+  	<!-- <div class="form-group blu-margin">
+	<label for="name">Tipo de sangre</label>
+    <select class="form-control" th:field="${paciente.tipoSangre.id}"  id="tipoSangreId">
+    <!-- <option value="0" th:text="select operator" ></option> -->
+    <!-- <option th:each="tiposangre : ${tipossangre}" th:value="${tiposangre.id}" th:text="${tiposangre.Nombre}"></option>
+    </select>
+	</div> -->
+  	
+  	
+  	<input type="submit" value="Crear paciente" />
+ 	<input type="hidden" id="id" th:field="*{id}">
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
