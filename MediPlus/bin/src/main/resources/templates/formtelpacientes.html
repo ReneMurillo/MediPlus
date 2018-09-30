@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title th:text="${titulo}">Registro de tipo de sangre</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"  />
+</head>
+<body>
+<div class="container">
+<br>
+<div class="row">
+<div class="col-sm-2"></div>
+<div class="col-sm-8">
+<div class="panel panel-primary">
+<div class="panel-heading">Registro de números de teléfono</div>
+<div class="panel-body">
+<form th:action="@{/formtelpacientes}" th:object="${telefonopaciente}" method="post" >
+	<div class="form-group">
+    	<label for="paciente">Paciente</label>
+    	<input type="text" class="form-control" id="paciente" placeholder="ID del paciente" th:field="*{paciente}"/>
+    	<small th:if="${#fields.hasErrors('paciente')}" th:errors="*{paciente}" class="form-text text-danger"></small>
+  	</div>
+  	<div class="form-group">
+    	<label for="numero">Número de teléfono</label>
+    	<input type="text" class="form-control" id="numero" placeholder="Número de teléfono" th:field="*{numero}"/>
+    	<small th:if="${#fields.hasErrors('numero')}" th:errors="*{numero}" class="form-text text-danger"></small>
+  	</div>
+  	<div class="form-group">
+    	<label for="tipoTelefono">Tipo de teléfono</label>
+    	<input type="text" class="form-control" id="tipoTelefono" placeholder="ID del tipo de teléfono" th:field="*{tipoTelefono}"/>
+    	<small th:if="${#fields.hasErrors('tipoTelefono')}" th:errors="*{tipoTelefono}" class="form-text text-danger"></small>
+  	</div>
+  	
+  	<input type="submit" value="Registrar número" />
+	<input type="hidden" id="id" th:field="*{numero}">
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

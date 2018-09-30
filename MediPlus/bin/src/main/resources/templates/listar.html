@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Lista de pacientes</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"  />
+</head>
+<body>
+<div class="container">
+<br>
+<div class="row">
+	<a th:href="@{/form}" class="btn btn-success btn-xs" >Crear paciente</a> |
+	<a th:href="@{/}" class="btn btn-warning btn-xs" >Regresar</a>
+</div>
+<br>
+	<table class="table">
+ <thead>
+  <tr>
+     <th scope="col">Id</th>
+     <th scope="col">Primer Nombre</th>
+     <th scope="col">Segundo Nombre</th>
+     <th scope="col">Primer Apellido</th>
+     <th scope="col">Segundo Apellido</th>
+     <th scope="col">Fecha Nacimiento</th>
+     <th scope="col">Tipo de sangre</th>
+  </tr>
+ </thead>
+
+ <tbody>
+  <tr th:each="paciente: ${pacientes}">
+     <td th:text="${paciente.id}"/>
+     <td th:text="${paciente.firstName}" />
+     <td th:text="${paciente.secondName}" />
+     <td th:text="${paciente.firstLastName}" />
+     <td th:text="${paciente.secondLastName}" />
+     <td th:text="${paciente.birthDate}" />
+     <td th:text="${paciente.tipoSangre.Nombre}" />
+     <td> <a th:href="@{/form/} + ${paciente.id}" th:text="'Editar'" class="btn btn-primary btn-xs" ></a></td>
+     <td> <a th:href="@{/eliminar/} + ${paciente.id}" th:text="'Eliminar'" class="btn btn-danger btn-xs" onclick="return confirm('Estas seguro?')" ></a></td>
+     <td> <a th:href="@{/formencargados/}" th:text="'Agregar encargado'" class="btn btn-warning btn-xs" ></a></td>
+  </tr>
+ </tbody>
+</table>
+</div>
+
+
+
+
+
+
+
+</body>
+</html>

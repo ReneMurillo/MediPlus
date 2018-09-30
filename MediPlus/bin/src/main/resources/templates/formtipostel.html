@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title th:text="${titulo}">Registro de tipo de sangre</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"  />
+</head>
+<body>
+<div class="container">
+<br>
+<div class="row">
+<div class="col-sm-2"></div>
+<div class="col-sm-8">
+<div class="panel panel-primary">
+<div class="panel-heading">Registro de tipo de sangre</div>
+<div class="panel-body">
+<form th:action="@{/formtipostel}" th:object="${tipos_telefonos}" method="post" >
+	<div class="form-group">
+    	<label for="Nombre">Nombre del tipo de teléfono</label>
+    	<input type="text" class="form-control" id="Nombre" placeholder="Nombre del tipo" th:field="*{Nombre}"/>
+    	<small th:if="${#fields.hasErrors('Nombre')}" th:errors="*{Nombre}" class="form-text text-danger"></small>
+  	</div>
+  	
+  	<input type="submit" value="Registrar tipo" />
+	<input type="hidden" id="id" th:field="*{id}">
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
